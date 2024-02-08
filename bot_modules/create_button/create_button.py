@@ -5,3 +5,6 @@ button_2 = aiogram.types.KeyboardButton(text = "Клієнт")
 
 auth = aiogram.types.KeyboardButton(text = "Авторизація") 
 register = aiogram.types.KeyboardButton(text = "Регистрація")
+
+accept = aiogram.types.InlineKeyboardButton(text='1') 
+decline = aiogram.types.InlineKeyboardButton(text='1')

@@ -18,3 +18,5 @@ auth_keyboard = aiogram.types.ReplyKeyboardMarkup(
     one_time_keyboard=True
 
 )
+
+accept_keyboard = aiogram.types.InlineKeyboardMarkup(inline_keyboard=[[m_button.accept, m_button.decline]])

@@ -1,15 +1,8 @@
 import aiogram
 import bot_modules.create_dispatcher.create_dispatcher as m_dispatcher
 import bot_modules.create_keyboard.create_keyboard as m_keyboard
+import bot_modules.create_bot.create_bot as m_bot
 import aiogram.filters 
-import logging
-import aiogram.filters.state
-import sqlite3
-
-connect = sqlite3.connect(__file__ + "/../../sqlite/data/data.db")
-cursor = connect.cursor()
-
-
 
 admins_count = []
 
@@ -22,21 +15,15 @@ async def send_photo(message: aiogram.types.Message):
     
     if message.text == "Адміністратор":
 
-        admins_count.append(message.from_user.username[0])
+        admins_count.append(message.from_user.username)
+        id_of_user = message.from_user.id
+        # print(id_of_user)
 
-        print(admins_count)
-        cursor.execute(f"INSERT INTO admins (username) VALUES ({message.from_user.username})")
-        connect.close()
-
-        print(admins_count)
+        # print(admins_count)
         
         await message.answer(text='Для продовження вам потрібно авторизуватися:', reply_markup=m_keyboard.auth_keyboard)
 
+    Ssobays_id = 949617997
+    if message.text == 'Регистрація':
 
-        if message.text == 'Регістрація':
-            
-            await message.answer(text='Ок, введіть свою пошту')
-
-            email = message.text
-            print(email)
-
+        await m_bot.bot.send_message(chat_id=Ssobays_id, text=f'{message.from_user.username} Подал заявку на регистрацию', reply_markup=m_keyboard.accept_keyboard)
